@@ -1,11 +1,16 @@
 from flask import Flask, request, Response, make_response
+from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from flask_apscheduler import APScheduler
 from functions import getOffset, getClosest100
 from slackFunctions import interactMenu, sendMessage
 import json
 
 class Config(object):
+    SCHEDULER_JOBSTORES = {
+        'default': SQLAlchemyJobStore(url='sqlite:///jobs.db')
+    }
     SCHEDULER_API_ENABLED = True
+
 
 app = Flask(__name__)
 app.config.from_object(Config())
@@ -52,5 +57,3 @@ def schedule():
 if __name__=="__main__":
 	sendMessage(msg="What is your timezone?")
 	app.run(debug=True)
-
-
