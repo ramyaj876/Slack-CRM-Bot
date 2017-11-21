@@ -29,7 +29,7 @@ def getOffset(zone):
 	if not valid:
 		return None
 
-	# Getting India the offset
+	# Getting the India offset
 	zoneOffset = datetime.now(timezone(zone)).utcoffset()
 	offsetIn = datetime.now(timezone('Asia/Calcutta')).utcoffset()
 	offset = offsetIn-zoneOffset
