@@ -4,10 +4,11 @@ from datetime import datetime
 
 
 timeSet = "12:00"
-curZoneCheck = ""
+wordCompare = ""
 
 def compareDistance(word1, word2):
 # Comparison for sorting
+	global wordCompare
 	return edit_distance(wordCompare, word1)-edit_distance(wordCompare, word2)
 
 def getClosest100(zone):
